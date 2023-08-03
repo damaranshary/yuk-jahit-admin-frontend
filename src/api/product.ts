@@ -26,6 +26,7 @@ export interface ResponseProductById {
 export interface ProductCard {
   product: ResponseProduct;
   index: number;
+  getProductsData: () => Promise<void>;
 }
 
 export interface ResponseProduct {
