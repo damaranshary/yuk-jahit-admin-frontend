@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
-const ProductsCard = ({ product, index }: ProductCard) => {
+const ProductsCard = ({ product, index, getProductsData }: ProductCard) => {
   const { _id, name, price, product_img } = product;
   // this component is used for showing the product details in the products page
 
@@ -36,7 +36,8 @@ const ProductsCard = ({ product, index }: ProductCard) => {
             duration: 1500,
             isClosable: true,
           });
-        }));
+        })
+        .finally(() => getProductsData()));
   };
 
   return (

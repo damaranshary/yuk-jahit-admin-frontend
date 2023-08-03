@@ -185,7 +185,6 @@ const EditProduct = () => {
           />
         </FormControl>
         <Flex>
-          <Button id="batal-ubah-button">Kembali</Button>
           <Button
             id="submit-ubah-button"
             type="submit"

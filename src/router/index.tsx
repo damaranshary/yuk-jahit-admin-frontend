@@ -20,7 +20,7 @@ const AppRouter = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setToken(localStorage.getItem("token"));
-    }, 2000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [token]);

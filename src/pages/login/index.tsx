@@ -10,6 +10,7 @@ import {
   Button,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 
 import { useState, FormEvent, ChangeEvent } from "react";
@@ -23,6 +24,7 @@ const Login = () => {
   const { email, password } = loginData;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  const toast = useToast();
 
   const handleOnSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -33,8 +35,21 @@ const Login = () => {
         setIsSubmitting(true);
         localStorage.setItem("token", res.token);
         navigate("/");
+        toast({
+          description: "Login Berhasil",
+          status: "success",
+          isClosable: true,
+          duration: 1500,
+        });
       })
-      .catch(() => {})
+      .catch(() => {
+        toast({
+          description: "Login Gagal",
+          status: "error",
+          isClosable: true,
+          duration: 1500,
+        });
+      })
       .finally(() => {
         setLoginData({ email: "", password: "" });
         setIsSubmitting(false);

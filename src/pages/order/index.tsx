@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import OrderCard from "../../components/orderCard";
-import { fetchAllOrders, ResponseOrder } from "../../api/admin";
+import { fetchAllOrders, ResponseOrder } from "../../api/order";
 import { Helmet } from "react-helmet-async";
 
 const Order = () => {
@@ -16,16 +16,17 @@ const Order = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
+  const getOrderData = async () => {
+    if (token) {
+      await fetchAllOrders(token).then((res) => {
+        setOrderData(res);
+      });
+    }
+  };
+
   useEffect(() => {
-    const handleGetOrderData = async () => {
-      if (orderData === undefined && token) {
-        await fetchAllOrders(token).then((res) => {
-          setOrderData(res);
-        });
-      }
-    };
-    handleGetOrderData();
-  }, [orderData, token]);
+    getOrderData();
+  }, []);
 
   useEffect(() => {
     if (!token) {
@@ -51,7 +52,7 @@ const Order = () => {
       </Text>
       {orderData && orderData.orders.length > 0 ? (
         orderData.orders.map((item, index) => {
-          return <OrderCard {...item} key={item._id} index={index} />;
+          return <OrderCard {...item} key={item._id} index={index} getOrderData={getOrderData}/>;
         })
       ) : (
         <Center>

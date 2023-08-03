@@ -1,4 +1,5 @@
 import {
+  Button,
   Box,
   Card,
   Container,
@@ -10,7 +11,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-import { OrderData } from "../../api/admin";
+import { OrderData, deleteOrder } from "../../api/order";
 
 import DetailOrderModal from "../detailOrderModal";
 
@@ -34,9 +35,32 @@ const OrderCard = (props: OrderData) => {
 
   const { updatedAt, _id, products, status, bill, index } = props; // destructuring the props
 
+  const token = localStorage.getItem("token");
+  const dateUpdated = getDate(updatedAt); // this is the date that will be shown
   const toast = useToast();
 
-  const dateUpdated = getDate(updatedAt); // this is the date that will be shown
+  const handleDeleteOrder = async () => {
+    token &&
+      (await deleteOrder(token, _id)
+        .then((res) => {
+          console.log(res);
+          toast({
+            title: `Transaksi berhasil dihapus`,
+            status: "success",
+            duration: 1500,
+            isClosable: true,
+          });
+        })
+        .catch(() => {
+          toast({
+            title: "Transaksi gagal dihapus",
+            status: "error",
+            duration: 1500,
+            isClosable: true,
+          });
+        })
+        .finally(() => props.getOrderData()));
+  };
 
   return (
     <Container
@@ -161,6 +185,19 @@ const OrderCard = (props: OrderData) => {
       <Flex alignItems="end" gap={3}>
         <Spacer />
         <DetailOrderModal {...props} />
+        <Button
+          id={`hapus-transaksi-button-${index + 1}`}
+          colorScheme="red"
+          borderRadius="full"
+          size="sm"
+          px={5}
+          fontSize="sm"
+          variant="solid"
+          mt={3}
+          onClick={handleDeleteOrder}
+        >
+          Hapus Transaksi
+        </Button>
       </Flex>
     </Container>
   );

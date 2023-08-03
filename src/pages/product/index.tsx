@@ -25,15 +25,16 @@ const AllProducts = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const toast = useToast();
+  
+  const getProductsData = async () => {
+    await fetchAllProducts().then((res) => {
+      setProducts(res);
+    });
+  };
 
   useEffect(() => {
-    const getProductsData = async () => {
-      await fetchAllProducts().then((res) => {
-        setProducts(res);
-      });
-    };
     getProductsData();
-  }, [products]);
+  }, []);
 
   useEffect(() => {
     if (!token) {
@@ -59,6 +60,7 @@ const AllProducts = () => {
         </Text>
         <Spacer />
         <Button
+          id="ke-tambah-produk-button"
           as={RouterLink}
           to="/products/add"
           colorScheme="green"
@@ -72,7 +74,7 @@ const AllProducts = () => {
         {products &&
           products.data.map((product, index) => {
             return (
-              <ProductCard product={product} key={product._id} index={index} />
+              <ProductCard product={product} key={product._id} index={index} getProductsData={getProductsData}/>
             );
           })}
       </SimpleGrid>

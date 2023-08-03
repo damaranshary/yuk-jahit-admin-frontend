@@ -127,6 +127,7 @@ const NavItem = ({ icon, children, to, ...rest }: NavItemProps) => {
   };
   return (
     <Box
+      id={children.toString() + "-navigation"}
       as={RouterLink}
       to={children === "Logout" ? "/" : to}
       style={{ textDecoration: "none" }}
