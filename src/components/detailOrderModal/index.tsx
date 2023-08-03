@@ -16,7 +16,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-import { OrderData } from "../../api/admin";
+import { OrderData } from "../../api/order";
 
 const DetailOrderModal = ({
   index,
