@@ -12,6 +12,7 @@ import {
   BoxProps,
   FlexProps,
   Spacer,
+  useToast,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -121,9 +122,16 @@ interface NavItemProps extends FlexProps {
 }
 const NavItem = ({ icon, children, to, ...rest }: NavItemProps) => {
   const navigate = useNavigate();
+  const toast = useToast();
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/");
+    toast({
+      title: "Logout berhasil",
+      status: "success",
+      duration: 1500,
+      isClosable: true,
+    });
   };
   return (
     <Box
