@@ -15,7 +15,7 @@ const Dashboard = () => {
         isClosable: true,
         duration: 1500,
       });
-      navigate("/login");
+      navigate("/");
     }
   }, [token]);
 

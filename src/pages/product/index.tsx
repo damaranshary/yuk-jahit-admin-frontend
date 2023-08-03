@@ -44,7 +44,7 @@ const AllProducts = () => {
         isClosable: true,
         duration: 1500,
       });
-      navigate("/login");
+      navigate("/");
     }
   }, [token]);
 

@@ -1,7 +1,6 @@
 import {
   Route,
   BrowserRouter as Router,
-  Navigate,
   Routes,
 } from "react-router-dom";
 import Login from "../pages/login";
@@ -44,8 +43,8 @@ const AppRouter = () => {
         </Sidebar>
       ) : (
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/" element={<Login />} />
+          <Route path="*" element={<NotFound404 />} />
         </Routes>
       )}
     </Router>
