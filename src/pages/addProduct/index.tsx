@@ -104,7 +104,7 @@ const AddProduct = () => {
         alignItems="center"
       >
         <FormControl isRequired>
-          <FormLabel>Nama</FormLabel>
+          <FormLabel id="label-nama">Nama</FormLabel>
           <Input
             id="nama-produk"
             name="name"
@@ -114,7 +114,7 @@ const AddProduct = () => {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Harga</FormLabel>
+          <FormLabel id="label-harga">Harga</FormLabel>
           <Input
             id="harga-produk"
             name="price"
@@ -124,8 +124,9 @@ const AddProduct = () => {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Kategori</FormLabel>
+          <FormLabel id="label-kategori">Kategori</FormLabel>
           <Select
+            id="kategori-produk"
             placeholder="Pilih Kategori Produk"
             name="category"
             onChange={handleOnChange}
@@ -140,7 +141,7 @@ const AddProduct = () => {
           </Select>
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Deskripsi</FormLabel>
+          <FormLabel id="label-deskripsi">Deskripsi</FormLabel>
           <Textarea
             id="deskripsi-produk"
             name="description"
@@ -149,7 +150,7 @@ const AddProduct = () => {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Gambar</FormLabel>
+          <FormLabel id="label-gambar">Gambar</FormLabel>
           <Input
             id="gambar-produk"
             name="image"
