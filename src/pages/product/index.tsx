@@ -1,5 +1,6 @@
 import {
   Button,
+  Center,
   Container,
   Flex,
   SimpleGrid,
@@ -25,7 +26,7 @@ const AllProducts = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const toast = useToast();
-  
+
   const getProductsData = async () => {
     await fetchAllProducts().then((res) => {
       setProducts(res);
@@ -71,12 +72,22 @@ const AllProducts = () => {
       </Flex>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing="30px" my={8}>
         {/* this is the grid layout to shows the product card */}
-        {products &&
+        {products ? (
           products.data.map((product, index) => {
             return (
-              <ProductCard product={product} key={product._id} index={index} getProductsData={getProductsData}/>
+              <ProductCard
+                product={product}
+                key={product._id}
+                index={index}
+                getProductsData={getProductsData}
+              />
             );
-          })}
+          })
+        ) : (
+          <Center>
+            <Text>Belum ada produk</Text>
+          </Center>
+        )}
       </SimpleGrid>
     </Container>
   );

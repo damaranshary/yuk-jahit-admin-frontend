@@ -52,7 +52,14 @@ const Order = () => {
       </Text>
       {orderData && orderData.orders.length > 0 ? (
         orderData.orders.map((item, index) => {
-          return <OrderCard {...item} key={item._id} index={index} getOrderData={getOrderData}/>;
+          return (
+            <OrderCard
+              {...item}
+              key={item._id}
+              index={index}
+              getOrderData={getOrderData}
+            />
+          );
         })
       ) : (
         <Center>
