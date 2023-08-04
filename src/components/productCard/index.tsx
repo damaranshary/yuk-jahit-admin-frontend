@@ -43,6 +43,7 @@ const ProductsCard = ({ product, index, getProductsData }: ProductCard) => {
   return (
     <Box
       key={_id}
+      className="product-card"
       id={`product-card-${index + 1}`}
       _hover={{
         shadow: "lg",
