@@ -133,10 +133,13 @@ const NavItem = ({ icon, children, to, ...rest }: NavItemProps) => {
       isClosable: true,
     });
   };
+
+  const linkName = children.toString().toLowerCase();
+  
   return (
     <Box
-      id={children.toString().toLowerCase + "-navigation"}
-      className={children.toString().toLowerCase + "-navigation"}
+      id={linkName + "-navigation"}
+      className={linkName + "-navigation"}
       as={RouterLink}
       to={children === "Logout" ? "/" : to}
       style={{ textDecoration: "none" }}
