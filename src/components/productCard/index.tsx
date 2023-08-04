@@ -21,9 +21,9 @@ const ProductsCard = ({ product, index, getProductsData }: ProductCard) => {
   const handleDelete = async () => {
     token &&
       (await deleteProductById(_id, token)
-        .then((res) => {
+        .then(() => {
           toast({
-            title: `Produk ${res.data.name} berhasil dihapus`,
+            title: `Produk berhasil dihapus`,
             status: "success",
             duration: 1500,
             isClosable: true,
