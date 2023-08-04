@@ -129,7 +129,9 @@ const EditProduct = () => {
         alignItems="center"
       >
         <FormControl isRequired>
-          <FormLabel fontWeight="semibold" id="label-nama">Nama</FormLabel>
+          <FormLabel fontWeight="semibold" id="label-nama">
+            Nama
+          </FormLabel>
           <Input
             id="nama-produk"
             name="name"
@@ -139,7 +141,9 @@ const EditProduct = () => {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel fontWeight="semibold" id="label-harga">Harga</FormLabel>
+          <FormLabel fontWeight="semibold" id="label-harga">
+            Harga
+          </FormLabel>
           <Input
             id="harga-produk"
             name="price"
@@ -149,8 +153,11 @@ const EditProduct = () => {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel fontWeight="semibold" id="label-kategori">Kategori</FormLabel>
+          <FormLabel fontWeight="semibold" id="label-kategori">
+            Kategori
+          </FormLabel>
           <Select
+            id="kategori-produk"
             placeholder="Pilih Kategori Produk"
             name="category"
             onChange={handleOnChange}
@@ -165,7 +172,9 @@ const EditProduct = () => {
           </Select>
         </FormControl>
         <FormControl isRequired>
-          <FormLabel fontWeight="semibold" id="label-deskripsi">Deskripsi</FormLabel>
+          <FormLabel fontWeight="semibold" id="label-deskripsi">
+            Deskripsi
+          </FormLabel>
           <Textarea
             id="deskripsi-produk"
             name="description"
@@ -175,7 +184,9 @@ const EditProduct = () => {
         </FormControl>
         {productImgLink && <Image src={productImgLink} w="200px" h="200px" />}
         <FormControl isRequired>
-          <FormLabel fontWeight="semibold" id="label-gambar">Gambar</FormLabel>
+          <FormLabel fontWeight="semibold" id="label-gambar">
+            Gambar
+          </FormLabel>
           <Input
             id="gambar-produk"
             name="image"
