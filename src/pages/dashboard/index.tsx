@@ -1,5 +1,6 @@
 import { Container, Heading, useToast } from "@chakra-ui/react";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
@@ -21,6 +22,10 @@ const Dashboard = () => {
 
   return (
     <Container mt={10}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Dashboard | YukJahit admin</title>
+      </Helmet>
       <Heading>SELAMAT DATANG ADMIN</Heading>
     </Container>
   );
