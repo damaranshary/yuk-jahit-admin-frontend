@@ -94,7 +94,7 @@ const AddProduct = () => {
     <Container maxW="3xl">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Ubah Data Produk | YukJahit admin</title>
+        <title>Tambah Produk | YukJahit admin</title>
       </Helmet>
       <Text as="h2" fontSize="2xl" fontWeight="bold" my={5}>
         Tambah Produk
