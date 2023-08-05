@@ -13,6 +13,7 @@ import {
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { addProduct } from "../../api/product";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AddProduct = () => {
   const [productData, setProductData] = useState({
@@ -91,6 +92,10 @@ const AddProduct = () => {
 
   return (
     <Container maxW="3xl">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Ubah Data Produk | YukJahit admin</title>
+      </Helmet>
       <Text as="h2" fontSize="2xl" fontWeight="bold" my={5}>
         Tambah Produk
       </Text>
