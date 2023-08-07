@@ -19,9 +19,7 @@ const ProductsCard = ({ product, index, getProductsData }: ProductCard) => {
   const toast = useToast();
 
   const handleDelete = async () => {
-
-    if(confirm("Apakah anda yakin ingin menghapus produk ini?")){
-      token &&
+    token &&
       (await deleteProductById(_id, token)
         .then(() => {
           toast({
@@ -40,9 +38,6 @@ const ProductsCard = ({ product, index, getProductsData }: ProductCard) => {
           });
         })
         .finally(() => getProductsData()));
-    } else {
-      return;
-    }
   };
 
   return (
