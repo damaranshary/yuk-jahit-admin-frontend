@@ -40,26 +40,30 @@ const OrderCard = (props: OrderData) => {
   const toast = useToast();
 
   const handleDeleteOrder = async () => {
-    token &&
-      (await deleteOrder(token, _id)
-        .then((res) => {
-          console.log(res);
-          toast({
-            title: `Transaksi berhasil dihapus`,
-            status: "success",
-            duration: 1500,
-            isClosable: true,
-          });
-        })
-        .catch(() => {
-          toast({
-            title: "Transaksi gagal dihapus",
-            status: "error",
-            duration: 1500,
-            isClosable: true,
-          });
-        })
-        .finally(() => props.getOrderData()));
+    if (confirm("Apakah anda yakin ingin menghapus transaksi ini?")) {
+      token &&
+        (await deleteOrder(token, _id)
+          .then((res) => {
+            console.log(res);
+            toast({
+              title: `Transaksi berhasil dihapus`,
+              status: "success",
+              duration: 1500,
+              isClosable: true,
+            });
+          })
+          .catch(() => {
+            toast({
+              title: "Transaksi gagal dihapus",
+              status: "error",
+              duration: 1500,
+              isClosable: true,
+            });
+          })
+          .finally(() => props.getOrderData()));
+    }else {
+      return;
+    }
   };
 
   return (
